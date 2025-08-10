@@ -70,6 +70,7 @@ Run smart contract test with `yarn hardhat:test`
 - Edit your frontend in `packages/nextjs/pages`
 - Edit your deployment scripts in `packages/hardhat/deploy`
 
+
 ## Deploy Contracts to Superchain Testnet(s)
 
 To deploy contracts to a remote testnet (e.g. Optimism Sepolia), follow the steps below:
@@ -113,3 +114,7 @@ To add Foundry to Scaffold-Lisk, follow this simple [tutorial](https://hardhat.o
 We highly recommend visiting the original [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
 
 To know more about its features, check out their [website](https://scaffoldeth.io).
+
+0xdca98A8eC30f04Af51d695f8A3C6ADD86c86E92a
+
+![alt text](image.png)

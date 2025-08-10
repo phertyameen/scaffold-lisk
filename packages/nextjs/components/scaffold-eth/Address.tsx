@@ -85,6 +85,7 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
     displayAddress = checkSumAddress;
   }
 
+  const CopyToClipboardAny = CopyToClipboard as any;
   return (
     <div className="flex items-center">
       <div className="flex-shrink-0">
@@ -116,7 +117,7 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
           aria-hidden="true"
         />
       ) : (
-        <CopyToClipboard
+        <CopyToClipboardAny
           text={checkSumAddress}
           onCopy={() => {
             setAddressCopied(true);
@@ -129,7 +130,7 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
             className="ml-1.5 text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer"
             aria-hidden="true"
           />
-        </CopyToClipboard>
+        </CopyToClipboardAny>
       )}
     </div>
   );

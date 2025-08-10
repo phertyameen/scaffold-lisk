@@ -9,6 +9,7 @@ export const TxReceipt = (
 ) => {
   const [txResultCopied, setTxResultCopied] = useState(false);
 
+  const CopyToClipboardAny = CopyToClipboard as any;
   return (
     <div className="flex text-sm rounded-3xl peer-checked:rounded-b-none min-h-0 bg-secondary py-0">
       <div className="mt-1 pl-2">
@@ -18,7 +19,7 @@ export const TxReceipt = (
             aria-hidden="true"
           />
         ) : (
-          <CopyToClipboard
+          <CopyToClipboardAny
             text={displayTxResult(txResult) as string}
             onCopy={() => {
               setTxResultCopied(true);
@@ -31,7 +32,7 @@ export const TxReceipt = (
               className="ml-1.5 text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer"
               aria-hidden="true"
             />
-          </CopyToClipboard>
+          </CopyToClipboardAny>
         )}
       </div>
       <div className="flex-wrap collapse collapse-arrow">

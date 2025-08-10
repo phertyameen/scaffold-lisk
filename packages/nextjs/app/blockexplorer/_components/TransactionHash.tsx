@@ -8,6 +8,7 @@ import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outl
 export const TransactionHash = ({ hash }: { hash: string }) => {
   const [addressCopied, setAddressCopied] = useState(false);
 
+  const CopyToClipboardAny = CopyToClipboard as any;
   return (
     <div className="flex items-center">
       <Link href={`/blockexplorer/transaction/${hash}`}>
@@ -19,7 +20,7 @@ export const TransactionHash = ({ hash }: { hash: string }) => {
           aria-hidden="true"
         />
       ) : (
-        <CopyToClipboard
+        <CopyToClipboardAny
           text={hash as string}
           onCopy={() => {
             setAddressCopied(true);
@@ -32,7 +33,7 @@ export const TransactionHash = ({ hash }: { hash: string }) => {
             className="ml-1.5 text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer"
             aria-hidden="true"
           />
-        </CopyToClipboard>
+        </CopyToClipboardAny>
       )}
     </div>
   );

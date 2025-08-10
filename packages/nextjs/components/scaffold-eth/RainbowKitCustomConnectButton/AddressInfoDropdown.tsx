@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { NetworkOptions } from "./NetworkOptions";
-import CopyToClipboard from "react-copy-to-clipboard";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { getAddress } from "viem";
 import { Address, useDisconnect } from "wagmi";
 import {
@@ -44,6 +44,7 @@ export const AddressInfoDropdown = ({
   };
   useOutsideClick(dropdownRef, closeDropdown);
 
+  const CopyToClipboardAny = CopyToClipboard as any;
   return (
     <>
       <details ref={dropdownRef} className="dropdown dropdown-end leading-3">
@@ -71,7 +72,7 @@ export const AddressInfoDropdown = ({
                 <span className=" whitespace-nowrap">Copy address</span>
               </div>
             ) : (
-              <CopyToClipboard
+              <CopyToClipboardAny
                 text={checkSumAddress}
                 onCopy={() => {
                   setAddressCopied(true);
@@ -87,7 +88,7 @@ export const AddressInfoDropdown = ({
                   />
                   <span className=" whitespace-nowrap">Copy address</span>
                 </div>
-              </CopyToClipboard>
+              </CopyToClipboardAny>
             )}
           </li>
           <li className={selectingNetwork ? "hidden" : ""}>

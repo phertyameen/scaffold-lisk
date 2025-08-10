@@ -1,6 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
+import type { ethers } from "ethers";
 
 /**
  * Deploys a contract named "VNDToken" using the deployer account and

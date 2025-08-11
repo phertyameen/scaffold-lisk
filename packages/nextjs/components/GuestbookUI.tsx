@@ -22,6 +22,7 @@ export default function GuestbookUI() {
     e.preventDefault();
     if (!name || !message) return alert("Please fill all fields");
     try {
+      console.log("Calling signGuestbook with:", { name, message });
       await signGuestbook();
       setName("");
       setMessage("");
@@ -42,13 +43,13 @@ export default function GuestbookUI() {
           type="text"
           placeholder="Your name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
         />
         <textarea
           className="border border-gray-300 rounded px-4 py-2 w-full"
           placeholder="Your message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={e => setMessage(e.target.value)}
         />
         <button
           type="submit"
@@ -65,11 +66,11 @@ export default function GuestbookUI() {
         {entries && entries.length > 0 ? (
           entries.map((entry: any, index: number) => (
             <div key={index} className="border p-3 rounded shadow-sm">
-              <p className="font-bold">{entry.name} <span className="text-sm text-gray-500">({entry.signer})</span></p>
-              <p>{entry.message}</p>
-              <p className="text-xs text-gray-400">
-                {new Date(Number(entry.timestamp) * 1000).toLocaleString()}
+              <p className="font-bold">
+                {entry.name} <span className="text-sm text-gray-500">({entry.signer})</span>
               </p>
+              <p>{entry.message}</p>
+              <p className="text-xs text-gray-400">{new Date(Number(entry.timestamp) * 1000).toLocaleString()}</p>
             </div>
           ))
         ) : (

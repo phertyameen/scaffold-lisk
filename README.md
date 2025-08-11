@@ -1,120 +1,89 @@
-<div align="left">
-  <a href="https://lisk.com"><img alt="Lisk" src="./packages/nextjs/public/readme-banner.png" width="100%"></a>
-</div>
-
-<br />
-
-Scaffold-Lisk is a fork of Scaffold-OP with minimal differences, providing additional dApp examples, native support for Superchain testnets, and more low-level instructions. We highly recommend the Scaffold-ETH2 docs as the primary guideline.
-
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
-
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
-
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
-
-<div align="center" style="margin-top: 24px;">
-  <img alt="App demo" src="./packages/nextjs/public/scaffold-lisk-landing.png" width="100%">
-</div>
-
-## Requirements
-
-Before you begin, you need to install the following tools:
-
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
-
-## Quickstart
-
-To get started with Scaffold-Lisk, follow the steps below:
-
-1. Clone this repo & install dependencies
-
-```
-git clone https://github.com/LiskHQ/scaffold-lisk.git
-cd scaffold-lisk
-yarn install
-```
-
-2. Run a local network in the first terminal:
-
-```
-yarn chain
-```
-
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
-
-3. On a second terminal, deploy the test contract:
-
-```
-yarn deploy
-```
-
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On the same terminal, start your NextJS app:
-
-```
-yarn start
-```
-
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
-
-Run smart contract test with `yarn hardhat:test`
-
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend in `packages/nextjs/pages`
-- Edit your deployment scripts in `packages/hardhat/deploy`
-
-
-## Deploy Contracts to Superchain Testnet(s)
-
-To deploy contracts to a remote testnet (e.g. Optimism Sepolia), follow the steps below:
-
-1. Get Superchain Sepolia ETH from the [Superchain Faucet](https://app.optimism.io/faucet)
-
-2. Inside the `packages/hardhat` directory, copy `.env.example` to `.env`.
-
-   ```bash
-   cd packages/hardhat && cp .env.example .env
-   ```
-
-3. Edit your `.env` to specify the environment variables. Only specifying the `DEPLOYER_PRIVATE_KEY` is necessary here. The contract will be deployed from the address associated with this private key, so make sure it has enough Sepolia ETH.
-
-   ```bash
-   DEPLOYER_PRIVATE_KEY = "your_private_key_with_sepolia_ETH";
-   ```
-
-4. Inside `scaffold-lisk`, run
-
-   ```bash
-   yarn deploy --network-options
-   ```
-
-   Use spacebar to make your selection(s). This command deploys all smart contracts in `packages/hardhat/contracts` to the selected network(s). Alternatively, you can try
-
-   ```bash
-   yarn deploy --network networkName
-   ```
-
-   Network names are found in `hardhat.config.js`. Please ensure you have enough Sepolia ETH on all these Superchains. If the deployments are successful, you will see the deployment tx hash on the terminal.
-
-## Adding Foundry
-
-Hardhat's NodeJS stack and cleaner deployment management makes it a better default for Scaffold-Lisk.
-
-To add Foundry to Scaffold-Lisk, follow this simple [tutorial](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-and-foundry) by Hardhat. We recommend users who want more robust and faster testing to add Foundry.
-
-## Documentation
-
-We highly recommend visiting the original [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out their [website](https://scaffoldeth.io).
-
-0xdca98A8eC30f04Af51d695f8A3C6ADD86c86E92a
+# Scaffold Lisk Guestbook DApp
+This repository is my implementation of the Scaffold Lisk guided project assignment, where it was forked and customized the Scaffold Lisk template to deploy and interact with a smart contract on the Lisk blockchain.
 
 ![alt text](image.png)
+
+## Project Overview
+- The goal of this assignment was to:
+
+- Fork the Scaffold Lisk project
+
+- Create a branch for development
+
+- Switch the project to use the Scaffold Lisk template
+
+- Develop and deploy a smart contract on the Lisk chain
+
+- Use the automatically generated ABI to interact with the contract
+
+- Build a frontend that reads and writes data to the deployed contract
+
+- Host the complete project on Vercel or Netlify
+
+## My Solution
+### Smart Contract
+I wrote a simple Guestbook smart contract in Solidity that allows users to sign the guestbook by submitting their names and a messages. The contract stores entries and allows retrieval of all guestbook entries and the total count.
+
+Terminal / CLI Commands Used
+1. Fork and Clone the Scaffold Lisk Repository
+# Fork the repository on GitHub manually, then clone your fork locally
+- example
+git clone https://github.com/phertyameen/scaffold-lisk.git
+cd scaffold-lisk
+
+# Create and switch to a new branch for your work
+git checkout -b my-guestbook-feature
+
+2. Install Dependencies
+yarn install
+
+3. Configure Environment Variables
+Create a .env file and add your RPC URL and private key:
+
+## Example for Hardhat deployment
+PRIVATE_KEY="your-wallet-private-key"
+RPC_URL="https://rpc.sepolia-api.lisk.com"
+
+4. Compile the Smart Contract
+yarn hardhat compile
+
+5. Deploy the Contract
+yarn hardhat run scripts/deploy.ts --network sepolia
+Make sure your hardhat.config.ts or hardhat.config.js includes the sepolia network configuration with the RPC_URL and PRIVATE_KEY.
+
+6. Run the Frontend Locally
+yarn dev
+Visit http://localhost:3000 to interact with your deployed contract via the frontend.
+
+9. Deploy to Vercel
+
+### Frontend Integration
+- Used Scaffold Lisk hooks to read and write contract data seamlessly.
+
+- The frontend allows users to submit guestbook entries and displays all entries in real-time.
+
+- The ABI was automatically handled by Scaffold Lisk.
+
+### Hosting
+The entire app is hosted live on Vercel: https://scaffold-lisk-nextjs-qmxk.vercel.app/
+liskSepolia contract address: 0xdca98A8eC30f04Af51d695f8A3C6ADD86c86E92a
+
+### Authur
+- GitHub Repository: [@phertyameen](https://github.com/phertyameen/scaffold-lisk)
+- LinkedIn - [Fatima Aminu](https://www.linkedin.com/in/fatima-aminu-839835176/)
+- Farcaster - [@teemahbee](https://farcaster.xyz/teemahbee)
+
+### Challenges Faced
+
+- Insufficient funds error: On sending transactions, encountered errors due to the wallet having insufficient testnet funds to pay for gas fees.
+
+- Network and RPC configuration: Needed to ensure the correct RPC endpoints and network IDs were set for Lisk Sepolia testnet, which required some trial and error.
+
+- Contract interaction: Debugging the flow between frontend input and smart contract write calls took effort, especially handling async transactions and loading states.
+
+- Despite these, you still get to see a demo 😁💃🏽
+
+### Environment Setup
+Remember to create a .env file for Hardhat configuration with your network keys and RPC URLs for deployment.
+
+Thank you for reviewing my project! Feel free to reach out if you have any questions.

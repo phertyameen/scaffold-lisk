@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Address, createPublicClient, http, toHex } from "viem";
-import { hardhat } from "viem/chains";
+import { liskSepolia } from "~~/chains";
 
 const publicClient = createPublicClient({
-  chain: hardhat,
-  transport: http(),
+  chain: liskSepolia,
+  transport: http(liskSepolia.rpcUrls.default.http[0]),
 });
 
 export const AddressStorageTab = ({ address }: { address: Address }) => {
